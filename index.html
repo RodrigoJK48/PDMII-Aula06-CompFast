@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>CompFast - E-commerce & Painel do Lojista</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary": "#006d32",
+            "surface-dim": "#dcd9d9",
+            "on-tertiary-fixed-variant": "#005224",
+            "surface-container-highest": "#e4e2e1",
+            "secondary-fixed-dim": "#adc6ff",
+            "surface-container-lowest": "#ffffff",
+            "inverse-primary": "#dec800",
+            "on-primary-fixed": "#201c00",
+            "primary-container": "#ffe600",
+            "on-background": "#1b1c1c",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#f6f3f2",
+            "surface-container": "#f0eded",
+            "background": "#fbf9f8",
+            "on-primary-container": "#726600",
+            "surface-bright": "#fbf9f8",
+            "error-container": "#ffdad6",
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#f3f0f0",
+            "outline": "#7c775f",
+            "tertiary-fixed": "#78fc9b",
+            "on-tertiary-fixed": "#00210b",
+            "surface-variant": "#e4e2e1",
+            "outline-variant": "#cdc7aa",
+            "primary-fixed": "#fde400",
+            "on-tertiary-container": "#007637",
+            "on-secondary-fixed-variant": "#004493",
+            "secondary-fixed": "#d8e2ff",
+            "primary-fixed-dim": "#dec800",
+            "on-primary-fixed-variant": "#504700",
+            "surface-tint": "#6a5f00",
+            "primary": "#6a5f00",
+            "on-error-container": "#93000a",
+            "secondary-container": "#1171e7",
+            "on-secondary-fixed": "#001a41",
+            "surface": "#fbf9f8",
+            "on-secondary-container": "#fefcff",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#303030",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#4b4731",
+            "tertiary-container": "#7bff9d",
+            "surface-container-high": "#eae8e7",
+            "tertiary-fixed-dim": "#5adf81",
+            "on-error": "#ffffff",
+            "on-surface": "#1b1c1c",
+            "secondary": "#0058bb"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-lg": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem"
+          },
+          fontFamily: {
+            "headline-xl": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "metric-display": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          fontSize: {
+            "headline-xl": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "metric-display": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-lg": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+
+  <!-- TOP APP BAR -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary-container text-on-background shadow-[0_1px_8px_rgba(0,0,0,0.06)] pt-safe">
+    <!-- Header Content for Lojista Mode -->
+    <div id="header-lojista" class="h-16 px-gutter flex items-center justify-between gap-space-sm max-w-7xl mx-auto w-full">
+      <div class="flex items-center gap-space-sm min-w-0">
+        <div class="flex items-center gap-2">
+          <span class="font-headline-lg text-headline-lg text-on-background font-bold tracking-tight">CompFast</span>
+          <span class="bg-on-background text-primary-container px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider">Lojista</span>
+        </div>
+      </div>
+
+      <!-- Mode Switcher & Quick Actions -->
+      <div class="flex items-center gap-space-sm">
+        <button id="btn-switch-to-cliente" class="px-3 py-1.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow hover:bg-secondary/90 transition-all">
+          <span class="material-symbols-outlined text-[18px]">storefront</span>
+          <span>Ir para Loja (Cliente)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Header Content for Cliente Mode -->
+    <div id="header-cliente" class="hidden h-28 px-margin flex flex-col justify-center gap-space-xs max-w-7xl mx-auto w-full">
+      <div class="flex items-center gap-space-sm h-12">
+        <div class="flex items-center gap-space-xs shrink-0 cursor-pointer" id="nav-brand-home">
+          <span class="font-headline-lg text-headline-lg text-on-background font-bold tracking-tight">CompFast</span>
+        </div>
+        <!-- Search bar -->
+        <div class="flex-1 flex items-center bg-surface-container-lowest rounded-full px-space-md py-space-xs shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+          <span class="material-symbols-outlined text-outline text-[18px] mr-space-xs">search</span>
+          <input type="text" id="cliente-search-input" class="w-full bg-transparent font-body-sm text-body-sm text-on-surface outline-none placeholder:text-on-surface-variant" placeholder="Buscar produtos, marcas, categorias..."/>
+        </div>
+        <div class="flex items-center shrink-0 gap-1">
+          <!-- Switch to Lojista -->
+          <button id="btn-switch-to-lojista" class="px-3 py-1.5 rounded-full bg-on-background text-primary-container font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow hover:opacity-95 transition-all">
+            <span class="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+            <span class="hidden md:inline">Painel Lojista</span>
+          </button>
+
+          <!-- Cart button -->
+          <button aria-label="Carrinho" id="btn-header-cart" class="w-11 h-11 flex items-center justify-center text-on-surface relative">
+            <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
+            <span id="cart-badge-count" class="absolute top-1.5 right-1.5 bg-secondary text-on-secondary font-label-sm text-[10px] w-4 h-4 rounded-full flex items-center justify-center leading-none font-bold">0</span>
+          </button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between h-9 px-space-xs">
+        <div class="flex items-center gap-space-xs overflow-hidden">
+          <span class="material-symbols-outlined text-[16px] text-on-surface-variant shrink-0">location_on</span>
+          <span class="font-body-sm text-body-sm text-on-surface truncate" id="cliente-address-label">Enviar para <strong id="header-customer-name">Cliente CompFast</strong> - São Paulo 01310-100</span>
+        </div>
+        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider shrink-0 pl-space-xs" id="cliente-header-view-title">Vitrine</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER FOR SPAs -->
+  <main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen max-w-7xl mx-auto flex-1">
+
+    <!-- ================= LOJISTA VIEWS ================= -->
+
+    <!-- VIEW: LOJISTA DASHBOARD -->
+    <section id="view-lojista-dashboard" class="view-section active w-full px-gutter py-space-md space-y-space-md">
+      <!-- Live Status & Filter Banner -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between bg-surface-container-lowest p-space-md rounded-xl shadow-sm gap-3">
+        <div class="flex items-center gap-space-sm min-w-0">
+          <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
+            <span class="material-symbols-outlined text-[22px]">storefront</span>
+          </div>
+          <div class="min-w-0">
+            <h2 class="font-headline-sm text-headline-sm text-on-surface truncate">TechFast Distribuidora</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Loja CompFast &amp; Supabase DB Ativo
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center bg-surface-container-low p-1 rounded-full shrink-0">
+          <span class="font-label-sm text-label-sm px-3 py-1 bg-secondary text-on-secondary rounded-full font-bold">Hoje</span>
+        </div>
+      </div>
+
+      <!-- Revenue Hero Card -->
+      <div class="relative overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm p-space-lg flex flex-col justify-between">
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-primary-container"></div>
+        <div class="flex items-start justify-between">
+          <div class="flex flex-col">
+            <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Faturamento Líquido</span>
+            <div class="flex items-baseline gap-2 mt-1">
+              <span id="dash-total-revenue" class="font-headline-xl text-headline-xl text-on-surface font-bold">R$ 0,00</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm font-semibold">
+                <span class="material-symbols-outlined text-[14px]">trending_up</span> Sincronizado
+              </span>
+            </div>
+            <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Vendas acumuladas via Supabase</span>
+          </div>
+          <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shadow-sm">
+            <span class="material-symbols-outlined text-[22px]">payments</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-space-sm mt-space-lg pt-space-md bg-surface-container-low rounded-lg p-space-sm">
+          <div class="flex flex-col pl-2">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Pedidos Concluídos</span>
+            <span id="dash-total-orders" class="font-headline-sm text-headline-sm font-bold text-on-surface mt-0.5">0 un.</span>
+          </div>
+          <div class="flex flex-col pl-2">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Ticket Médio</span>
+            <span id="dash-avg-ticket" class="font-headline-sm text-headline-sm font-bold text-on-surface mt-0.5">R$ 0,00</span>
+          </div>
+          <div class="flex flex-col pl-2 col-span-2 sm:col-span-1">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Clientes Cadastrados</span>
+            <span id="dash-total-customers" class="font-headline-sm text-headline-sm font-bold text-on-surface mt-0.5">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Shortcuts -->
+      <div class="flex flex-col space-y-space-xs">
+        <h3 class="font-headline-sm text-headline-sm text-on-surface">Atalhos Operacionais</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-1">
+          <button onclick="app.navigate('lojista-produtos-form')" class="flex items-center gap-3 bg-surface-container-lowest p-3 rounded-xl shadow-sm hover:bg-surface-container transition-all text-left">
+            <div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[22px]">add_box</span>
+            </div>
+            <div>
+              <span class="font-label-md text-label-md font-bold text-on-surface block">Novo Produto</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Cadastrar no BD</span>
+            </div>
+          </button>
+          <button onclick="app.navigate('lojista-promocoes-cupons')" class="flex items-center gap-3 bg-surface-container-lowest p-3 rounded-xl shadow-sm hover:bg-surface-container transition-all text-left">
+            <div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[22px]">campaign</span>
+            </div>
+            <div>
+              <span class="font-label-md text-label-md font-bold text-on-surface block">Promoções</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Datas &amp; Regras</span>
+            </div>
+          </button>
+          <button onclick="app.navigate('lojista-promocoes-cupons')" class="flex items-center gap-3 bg-surface-container-lowest p-3 rounded-xl shadow-sm hover:bg-surface-container transition-all text-left">
+            <div class="w-10 h-10 rounded-full bg-primary-fixed text-on-primary-fixed-variant flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[22px]">confirmation_number</span>
+            </div>
+            <div>
+              <span class="font-label-md text-label-md font-bold text-on-surface block">Novo Cupom</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Descontos</span>
+            </div>
+          </button>
+          <button onclick="app.navigate('lojista-vendas')" class="flex items-center gap-3 bg-surface-container-lowest p-3 rounded-xl shadow-sm hover:bg-surface-container transition-all text-left">
+            <div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+            </div>
+            <div>
+              <span class="font-label-md text-label-md font-bold text-on-surface block">Ver Pedidos</span>
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Gestão de Vendas</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Orders List -->
+      <div class="flex flex-col space-y-space-sm pt-space-xs">
+        <div class="flex items-center justify-between">
+          <h3 class="font-headline-sm text-headline-sm text-on-surface">Últimos Pedidos</h3>
+          <button onclick="app.navigate('lojista-vendas')" class="font-label-sm text-label-sm text-secondary font-semibold hover:underline">Ver todos</button>
+        </div>
+        <div id="dash-recent-orders-container" class="flex flex-col gap-space-sm">
+          <!-- Dynamic Order Cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: LOJISTA PRODUTOS & CATEGORIAS -->
+    <section id="view-lojista-produtos" class="view-section w-full">
+      <div class="px-gutter pt-space-md pb-space-sm bg-surface-container-low flex flex-col gap-space-sm w-full">
+        <div class="flex items-center justify-between">
+          <div class="flex flex-col">
+            <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Gestão de Catálogo</span>
+            <div class="flex items-baseline gap-1.5">
+              <span id="lojista-product-count" class="font-headline-sm text-headline-sm text-on-surface font-bold">0 produtos</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="app.openCategoryModal()" class="px-3 py-1.5 rounded-full font-label-md text-label-md flex items-center gap-1 bg-surface-container-high text-secondary hover:bg-secondary-fixed transition-all shadow-sm">
+              <span class="material-symbols-outlined text-[18px]">add_circle</span>
+              <span>Nova Categoria</span>
+            </button>
+            <button onclick="app.openProductForm()" class="px-3.5 py-1.5 rounded-full font-label-md text-label-md flex items-center gap-1 bg-secondary text-on-secondary shadow-sm active:scale-95 transition-all">
+              <span class="material-symbols-outlined text-[18px]">add</span>
+              <span>Novo Produto</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search input -->
+        <div class="relative w-full flex items-center">
+          <span class="material-symbols-outlined text-[20px] text-on-surface-variant absolute left-3 pointer-events-none">search</span>
+          <input type="search" id="lojista-product-search" class="w-full h-11 pl-10 pr-4 bg-surface-container-lowest text-on-surface font-body-md text-body-md rounded-xl shadow-sm outline-none placeholder:text-on-surface-variant/70" placeholder="Buscar por nome ou SKU..."/>
+        </div>
+      </div>
+
+      <!-- Categories Pills -->
+      <div class="w-full bg-surface-container-low pb-space-md pt-1 overflow-x-auto no-scrollbar">
+        <div id="lojista-categories-pills" class="flex items-center gap-2 px-gutter min-w-max">
+          <!-- Dynamic Category Pills -->
+        </div>
+      </div>
+
+      <!-- Product List Feed -->
+      <div id="lojista-products-list" class="px-gutter py-space-md flex flex-col gap-space-sm pb-28">
+        <!-- Dynamic Product Cards -->
+      </div>
+    </section>
+
+    <!-- VIEW: LOJISTA FORMULARIO PRODUTO (Cadastrar / Editar) -->
+    <section id="view-lojista-produtos-form" class="view-section w-full px-gutter pt-space-lg flex flex-col gap-space-lg max-w-3xl mx-auto pb-32">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <button onclick="app.navigate('lojista-produtos')" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </button>
+          <h2 id="product-form-title" class="font-headline-lg text-headline-lg text-on-surface font-bold">Cadastrar Produto</h2>
+        </div>
+      </div>
+
+      <form id="product-form" class="flex flex-col gap-space-lg">
+        <input type="hidden" id="prod-id" value=""/>
+
+        <!-- Gallery Section -->
+        <section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-on-surface">Galeria de Imagens</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Adicione URLs de imagens ou faça upload local de fotos.</p>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label class="font-label-md text-label-md text-on-surface">URL da Imagem Principal</label>
+            <input type="url" id="prod-image-url" class="w-full h-11 px-space-md bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all" placeholder="https://exemplo.com/foto.jpg"/>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label class="font-label-md text-label-md text-on-surface">Ou Selecionar Arquivo de Foto</label>
+            <input type="file" id="prod-image-file" accept="image/*" class="w-full text-body-sm text-on-surface file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-label-md file:font-semibold file:bg-secondary-fixed file:text-on-secondary-fixed-variant hover:file:bg-secondary-fixed-dim cursor-pointer"/>
+          </div>
+
+          <!-- Image Preview -->
+          <div id="prod-image-preview-container" class="mt-2 hidden flex-col gap-2">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Pré-visualização da Foto:</span>
+            <div class="w-32 h-32 rounded-xl overflow-hidden bg-surface-container border border-surface-container-high">
+              <img id="prod-image-preview" src="" class="w-full h-full object-cover" alt="Preview"/>
+            </div>
+          </div>
+        </section>
+
+        <!-- Main Product Info -->
+        <section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+          <h3 class="font-headline-sm text-headline-sm text-on-surface">Informações Principais</h3>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface" for="prod-name">Nome do Produto <span class="text-error">*</span></label>
+            <input type="text" id="prod-name" required class="w-full h-12 px-space-md bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all" placeholder="Ex: Fone de Ouvido Bluetooth Pro"/>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface" for="prod-category">Categoria <span class="text-error">*</span></label>
+              <select id="prod-category" required class="w-full h-12 px-space-md bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all">
+                <!-- Dynamic options -->
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface" for="prod-sku">Código SKU / Referência</label>
+              <input type="text" id="prod-sku" class="w-full h-12 px-space-md bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all" placeholder="Ex: AUD-PRO-01"/>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-space-md">
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface" for="prod-price">Preço de Venda (R$) <span class="text-error">*</span></label>
+              <input type="number" step="0.01" id="prod-price" required class="w-full h-12 px-space-md bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all" placeholder="0,00"/>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface-variant" for="prod-compare-price">Preço Original / Riscado (R$)</label>
+              <input type="number" step="0.01" id="prod-compare-price" class="w-full h-12 px-space-md bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all" placeholder="0,00"/>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-space-md">
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface" for="prod-stock">Qtd. em Estoque <span class="text-error">*</span></label>
+              <input type="number" id="prod-stock" required class="w-full h-12 px-space-md bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all" placeholder="10"/>
+            </div>
+
+            <div class="flex flex-col justify-end">
+              <label class="flex items-center gap-2 cursor-pointer select-none pb-2">
+                <input type="checkbox" id="prod-active" checked class="w-5 h-5 rounded text-secondary accent-secondary cursor-pointer"/>
+                <span class="font-label-md text-label-md text-on-surface font-semibold">Produto Ativo na Loja</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface" for="prod-desc">Descrição Detalhada</label>
+            <textarea id="prod-desc" rows="4" class="w-full p-space-md bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-secondary transition-all" placeholder="Escreva sobre as características, garantia e especificações do produto..."></textarea>
+          </div>
+        </section>
+
+        <!-- Fixed Submit Belt -->
+        <div class="fixed bottom-0 left-0 right-0 z-40 bg-surface-container-lowest shadow-[0_-4px_16px_rgba(0,0,0,0.08)] pb-safe">
+          <div class="max-w-3xl mx-auto px-gutter py-space-sm flex items-center gap-space-sm">
+            <button type="button" onclick="app.navigate('lojista-produtos')" class="flex-1 h-12 rounded-lg bg-surface-container text-on-surface font-label-lg text-label-lg active:bg-surface-container-high transition-colors">
+              Cancelar
+            </button>
+            <button type="submit" id="btn-save-product" class="flex-[2] h-12 rounded-lg bg-secondary text-on-secondary font-label-lg text-label-lg shadow-sm active:brightness-95 flex items-center justify-center gap-space-xs transition-all font-bold">
+              <span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+              <span>Salvar no Supabase</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- VIEW: LOJISTA PROMOÇÕES & CUPONS -->
+    <section id="view-lojista-promocoes-cupons" class="view-section w-full px-gutter py-space-md space-y-space-md">
+      <!-- Switcher Tabs -->
+      <div class="bg-surface-container p-1 rounded-xl flex items-center shadow-inner">
+        <button id="tab-promos-btn" onclick="app.switchPromoTab('promos')" class="flex-1 py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-all duration-200 bg-surface-container-lowest text-secondary shadow-sm font-label-lg text-label-lg font-bold">
+          <span class="material-symbols-outlined text-[18px]">bolt</span>
+          <span>Promoções</span>
+        </button>
+        <button id="tab-cupons-btn" onclick="app.switchPromoTab('cupons')" class="flex-1 py-2 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-all duration-200 text-on-surface-variant hover:text-on-surface font-label-lg text-label-lg font-bold">
+          <span class="material-symbols-outlined text-[18px]">confirmation_number</span>
+          <span>Cupons de Desconto</span>
+        </button>
+      </div>
+
+      <!-- PROMOTIONS TAB VIEW -->
+      <div id="promos-tab-content" class="flex flex-col gap-space-md">
+        <div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-xl shadow-sm">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Promoções Relâmpago</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Descontos temporários por produto ou por categoria completa</p>
+          </div>
+          <button onclick="app.openPromotionModal()" class="h-10 px-4 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold flex items-center gap-1.5 shadow active:scale-95 transition">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+            <span>Nova Promoção</span>
+          </button>
+        </div>
+
+        <div id="promotions-list-container" class="flex flex-col gap-space-sm">
+          <!-- Dynamic Promotions -->
+        </div>
+      </div>
+
+      <!-- COUPONS TAB VIEW -->
+      <div id="cupons-tab-content" class="hidden flex-col gap-space-md">
+        <div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-xl shadow-sm">
+          <div>
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Cupons de Desconto</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Códigos promocionais aplicáveis no carrinho de compras</p>
+          </div>
+          <button onclick="app.openCouponModal()" class="h-10 px-4 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold flex items-center gap-1.5 shadow active:scale-95 transition">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+            <span>Criar Cupom</span>
+          </button>
+        </div>
+
+        <div id="coupons-list-container" class="flex flex-col gap-space-sm">
+          <!-- Dynamic Coupons -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: LOJISTA VENDAS & PEDIDOS -->
+    <section id="view-lojista-vendas" class="view-section w-full px-gutter py-space-md space-y-space-md">
+      <div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-xl shadow-sm">
+        <div>
+          <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Gestão de Vendas &amp; Pedidos</h2>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">Acompanhe vendas efetuadas pelos clientes na loja</p>
+        </div>
+        <span id="orders-total-badge" class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">0 Pedidos</span>
+      </div>
+
+      <div id="lojista-orders-list" class="flex flex-col gap-space-sm">
+        <!-- Dynamic Orders -->
+      </div>
+    </section>
+
+    <!-- VIEW: LOJISTA CLIENTES -->
+    <section id="view-lojista-clientes" class="view-section w-full px-gutter py-space-md space-y-space-md">
+      <div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-xl shadow-sm">
+        <div>
+          <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Gestão de Clientes</h2>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">Base de clientes e histórico de compras</p>
+        </div>
+        <span id="customers-total-badge" class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold">0 Clientes</span>
+      </div>
+
+      <div id="lojista-customers-list" class="flex flex-col gap-space-sm">
+        <!-- Dynamic Customers List -->
+      </div>
+    </section>
+
+
+    <!-- ================= CLIENTE VIEWS ================= -->
+
+    <!-- VIEW: CLIENTE VITRINE / INÍCIO -->
+    <section id="view-cliente-vitrine" class="view-section w-full space-y-space-md">
+      <!-- Promotional Hero Carousel Banner -->
+      <section class="px-margin pt-3">
+        <div class="relative w-full rounded-2xl overflow-hidden shadow-md bg-gradient-to-r from-primary via-primary/95 to-secondary p-5 text-on-primary">
+          <div class="relative z-10 flex flex-col items-start max-w-[85%]">
+            <div class="inline-flex items-center gap-1 bg-primary-container text-on-primary-container px-2.5 py-0.5 rounded-full font-label-sm text-label-sm mb-2 shadow-sm font-bold uppercase tracking-wider">
+              <span class="material-symbols-outlined text-[14px]">local_shipping</span>
+              <span>Frete Grátis Flex</span>
+            </div>
+            <h2 class="font-headline-lg text-headline-lg font-bold leading-tight tracking-tight text-surface-container-lowest">
+              MEGA OFERTAS COMPFAST
+            </h2>
+            <p class="font-body-md text-body-md text-surface-container-low mt-1 mb-4 opacity-95">
+              Promoções e cupons exclusivos com entrega rápida!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Horizontal Categories Carousel -->
+      <section class="w-full">
+        <div id="cliente-categories-carousel" class="flex items-center gap-3 overflow-x-auto px-margin no-scrollbar py-1">
+          <!-- Dynamic Category Buttons -->
+        </div>
+      </section>
+
+      <!-- Active Flash Promotions Banner -->
+      <section id="cliente-flash-promos-section" class="px-margin hidden flex-col gap-2.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Destaques com Ofertas</h3>
+            <span class="bg-error text-on-error font-label-sm text-label-sm font-bold px-2 py-0.5 rounded-full">Ativas</span>
+          </div>
+        </div>
+        <div id="cliente-promotions-highlight-container" class="flex flex-col gap-2.5">
+          <!-- Dynamic promo highlight cards -->
+        </div>
+      </section>
+
+      <!-- Product Grid -->
+      <section class="px-margin flex flex-col gap-2.5 pb-28">
+        <div class="flex items-center justify-between">
+          <h3 id="cliente-products-title" class="font-headline-sm text-headline-sm font-bold text-on-surface">Todos os Produtos</h3>
+          <span id="cliente-products-count" class="font-label-sm text-label-sm text-on-surface-variant font-medium">0 itens</span>
+        </div>
+
+        <div id="cliente-products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          <!-- Dynamic Product Cards -->
+        </div>
+      </section>
+    </section>
+
+    <!-- VIEW: CLIENTE CARRINHO DE COMPRAS -->
+    <section id="view-cliente-carrinho" class="view-section w-full space-y-space-md pb-32">
+      <!-- Shipping Banner -->
+      <div class="px-margin pt-space-md pb-space-sm bg-surface-container-lowest shadow-sm">
+        <div class="flex items-center justify-between mb-space-xs">
+          <div class="flex items-center gap-space-xs">
+            <span class="material-symbols-outlined text-tertiary text-[20px]" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+            <span class="font-label-md text-label-md text-on-surface">Frete Grátis acima de <strong>R$ 100,00</strong>!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Items List -->
+      <div class="px-margin">
+        <div class="flex items-center justify-between mb-2">
+          <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Itens Selecionados</h2>
+          <button onclick="app.clearCart()" class="font-label-sm text-label-sm text-error hover:underline">Esvaziar carrinho</button>
+        </div>
+        <div id="cart-items-container" class="flex flex-col gap-space-sm">
+          <!-- Dynamic Cart Items -->
+        </div>
+      </div>
+
+      <!-- Coupon Input Section -->
+      <div class="px-margin">
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+          <div class="flex items-center gap-space-xs mb-space-sm">
+            <span class="material-symbols-outlined text-secondary text-[20px]">sell</span>
+            <span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Cupom de Desconto</span>
+          </div>
+
+          <div id="applied-coupon-block" class="hidden items-center justify-between bg-tertiary-container/20 rounded-lg p-space-sm mb-space-sm">
+            <div class="flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-tertiary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              <div class="flex flex-col">
+                <span id="applied-coupon-code" class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">CUPOM</span>
+                <span id="applied-coupon-desc" class="font-label-sm text-label-sm text-tertiary font-semibold">Desconto aplicado</span>
+              </div>
+            </div>
+            <button onclick="app.removeAppliedCoupon()" class="w-8 h-8 flex items-center justify-center text-outline hover:text-error transition-colors">
+              <span class="material-symbols-outlined text-[18px]">close</span>
+            </button>
+          </div>
+
+          <div class="flex gap-space-xs">
+            <input type="text" id="coupon-input" class="flex-1 h-11 px-space-md bg-surface-container rounded-lg font-body-sm text-body-sm text-on-surface uppercase placeholder:normal-case placeholder:text-outline outline-none focus:ring-2 focus:ring-secondary transition-all" placeholder="Digite o código (ex: COMPFAST15)"/>
+            <button onclick="app.applyCouponCode()" class="px-space-lg h-11 bg-secondary text-on-secondary font-label-md text-label-md font-bold rounded-lg transition-all active:scale-95 shrink-0">
+              Aplicar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping Selection -->
+      <div class="px-margin">
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+          <span class="font-headline-sm text-headline-sm text-on-surface font-semibold block mb-space-sm">Opções de Envio</span>
+          <div class="space-y-space-sm">
+            <label class="flex items-start gap-space-sm p-space-sm rounded-lg bg-secondary-fixed/30 cursor-pointer">
+              <input type="radio" name="shipping_option" value="9.90" checked onchange="app.updateCartSummary()" class="mt-1 accent-secondary cursor-pointer"/>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-space-xs">
+                  <span class="font-label-md text-label-md text-on-surface font-bold">Envio Express Flex</span>
+                  <span class="font-label-md text-label-md text-on-surface font-bold">R$ 9,90</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Receba hoje no seu endereço</p>
+              </div>
+            </label>
+            <label class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container cursor-pointer">
+              <input type="radio" name="shipping_option" value="0.00" onchange="app.updateCartSummary()" class="mt-1 accent-secondary cursor-pointer"/>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-space-xs">
+                  <span class="font-label-md text-label-md text-on-surface font-semibold">Retirar em Ponto Parceiro</span>
+                  <span class="font-label-md text-label-md text-tertiary font-bold">Grátis</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Pronto amanhã</p>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="px-margin">
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm">
+          <span class="font-headline-sm text-headline-sm text-on-surface font-semibold block mb-space-xs">Resumo do Pedido</span>
+
+          <div class="flex items-center justify-between font-body-md text-body-md text-on-surface-variant">
+            <span>Subtotal dos Produtos</span>
+            <span id="summary-subtotal" class="text-on-surface font-semibold">R$ 0,00</span>
+          </div>
+
+          <div id="summary-discount-row" class="hidden items-center justify-between font-body-md text-body-md text-tertiary">
+            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">sell</span> Cupom de Desconto</span>
+            <span id="summary-discount-val">- R$ 0,00</span>
+          </div>
+
+          <div class="flex items-center justify-between font-body-md text-body-md text-on-surface-variant">
+            <span>Frete</span>
+            <span id="summary-shipping" class="text-on-surface font-semibold">R$ 9,90</span>
+          </div>
+
+          <div class="pt-space-sm border-t border-surface-container flex items-baseline justify-between">
+            <span class="font-headline-md text-headline-md text-on-surface font-bold">Total a Pagar</span>
+            <span id="summary-total" class="font-headline-lg text-headline-lg font-bold text-secondary">R$ 0,00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dock Checkout Action Bar -->
+      <div class="fixed bottom-16 inset-x-0 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_-4px_16px_rgba(0,0,0,0.08)] px-margin py-space-sm z-40 max-w-7xl mx-auto">
+        <div class="flex flex-col gap-space-xs">
+          <div class="flex items-center justify-between px-space-xs">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Total com frete</span>
+            <span id="floating-cart-total" class="font-headline-md text-headline-md font-bold text-secondary">R$ 0,00</span>
+          </div>
+          <button onclick="app.startCheckout()" id="btn-proceed-checkout" class="w-full h-12 bg-secondary hover:bg-secondary/90 text-on-secondary font-label-lg text-label-lg font-bold rounded-xl shadow-md flex items-center justify-center gap-space-xs transition-all">
+            <span>Continuar Checkout</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: CLIENTE CHECKOUT & CADASTRO -->
+    <section id="view-cliente-checkout" class="view-section w-full px-gutter py-space-md max-w-2xl mx-auto pb-32">
+      <div class="flex items-center gap-2 mb-4">
+        <button onclick="app.navigate('cliente-carrinho')" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high text-on-surface">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Finalizar Compra</h2>
+      </div>
+
+      <form id="checkout-form" class="flex flex-col gap-space-md">
+        <!-- Customer Registration Form -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
+          <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">1. Dados do Cliente</h3>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Nome Completo <span class="text-error">*</span></label>
+            <input type="text" id="cust-full-name" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="Ex: João Silva"/>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface">E-mail <span class="text-error">*</span></label>
+              <input type="email" id="cust-email" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="joao@email.com"/>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface">Telefone / WhatsApp <span class="text-error">*</span></label>
+              <input type="tel" id="cust-phone" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="(11) 98765-4321"/>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface">CPF</label>
+              <input type="text" id="cust-cpf" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="000.000.000-00"/>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label class="font-label-md text-label-md text-on-surface">Endereço de Entrega <span class="text-error">*</span></label>
+              <input type="text" id="cust-address" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="Rua, Número, Bairro, Cidade - SP"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Items Review -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
+          <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">2. Resumo da Ordem</h3>
+          <div id="checkout-order-summary-list" class="flex flex-col gap-2 divide-y divide-surface-container">
+            <!-- Dynamic order items -->
+          </div>
+          <div class="pt-2 flex justify-between font-headline-sm text-headline-sm font-bold text-on-surface">
+            <span>Total Final</span>
+            <span id="checkout-final-total" class="text-secondary">R$ 0,00</span>
+          </div>
+        </div>
+
+        <!-- Submit Purchase Button -->
+        <button type="submit" id="btn-finish-order" class="w-full h-12 bg-tertiary text-on-tertiary font-label-lg text-label-lg font-bold rounded-xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-98">
+          <span class="material-symbols-outlined">check_circle</span>
+          <span>Confirmar e Finalizar Pedido</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- VIEW: CLIENTE CONFIRMAÇÃO DE PEDIDO -->
+    <section id="view-cliente-sucesso" class="view-section w-full px-gutter py-12 max-w-lg mx-auto text-center flex flex-col items-center gap-4">
+      <div class="w-20 h-20 rounded-full bg-tertiary-container text-tertiary flex items-center justify-center shadow-md">
+        <span class="material-symbols-outlined text-[48px]">check_circle</span>
+      </div>
+
+      <h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Pedido Confirmado!</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        Obrigado pela sua compra no <strong>CompFast</strong>. Seu pedido foi gravado com sucesso no nosso banco de dados no Supabase.
+      </p>
+
+      <div id="order-success-details" class="w-full bg-surface-container-lowest p-4 rounded-xl shadow-sm text-left flex flex-col gap-2">
+        <!-- Order details -->
+      </div>
+
+      <div class="flex gap-3 w-full pt-4">
+        <button onclick="app.navigate('cliente-vitrine')" class="flex-1 h-12 bg-secondary text-on-secondary font-label-lg text-label-lg font-bold rounded-xl shadow">
+          Voltar às Compras
+        </button>
+        <button onclick="app.navigate('lojista-vendas')" class="flex-1 h-12 bg-surface-container-high text-on-surface font-label-lg text-label-lg font-bold rounded-xl">
+          Ver no Painel Lojista
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- NAVIGATION BARS -->
+
+  <!-- LOJISTA BOTTOM NAV -->
+  <nav id="nav-lojista" class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl shadow-[0_-2px_10px_rgba(0,0,0,0.06)] border-t border-surface-container">
+    <div class="h-16 px-space-xs flex items-center justify-around max-w-7xl mx-auto">
+      <button onclick="app.navigate('lojista-dashboard')" data-path="lojista-dashboard" class="lojista-nav-item flex flex-col items-center justify-center min-w-[54px] min-h-[44px] py-1 text-secondary font-semibold">
+        <span class="material-symbols-outlined text-[24px]">analytics</span>
+        <span class="font-label-sm text-label-sm mt-0.5">Painel</span>
+      </button>
+      <button onclick="app.navigate('lojista-produtos')" data-path="lojista-produtos" class="lojista-nav-item flex flex-col items-center justify-center min-w-[54px] min-h-[44px] py-1 text-on-surface-variant hover:text-secondary">
+        <span class="material-symbols-outlined text-[24px]">inventory_2</span>
+        <span class="font-label-sm text-label-sm mt-0.5">Produtos</span>
+      </button>
+      <button onclick="app.navigate('lojista-promocoes-cupons')" data-path="lojista-promocoes-cupons" class="lojista-nav-item flex flex-col items-center justify-center min-w-[54px] min-h-[44px] py-1 text-on-surface-variant hover:text-secondary">
+        <span class="material-symbols-outlined text-[24px]">bolt</span>
+        <span class="font-label-sm text-label-sm mt-0.5">Cupons &amp; Ofertas</span>
+      </button>
+      <button onclick="app.navigate('lojista-vendas')" data-path="lojista-vendas" class="lojista-nav-item flex flex-col items-center justify-center min-w-[54px] min-h-[44px] py-1 text-on-surface-variant hover:text-secondary">
+        <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+        <span class="font-label-sm text-label-sm mt-0.5">Vendas</span>
+      </button>
+      <button onclick="app.navigate('lojista-clientes')" data-path="lojista-clientes" class="lojista-nav-item flex flex-col items-center justify-center min-w-[54px] min-h-[44px] py-1 text-on-surface-variant hover:text-secondary">
+        <span class="material-symbols-outlined text-[24px]">group</span>
+        <span class="font-label-sm text-label-sm mt-0.5">Clientes</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- CLIENTE BOTTOM NAV -->
+  <nav id="nav-cliente" class="hidden fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest shadow-[0_-2px_8px_rgba(0,0,0,0.08)] border-t border-surface-container">
+    <div class="flex justify-around items-center h-16 max-w-7xl mx-auto px-space-xs">
+      <button onclick="app.navigate('cliente-vitrine')" data-path="cliente-vitrine" class="cliente-nav-item flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-secondary font-semibold">
+        <span class="material-symbols-outlined text-[22px]">home</span>
+        <span class="font-label-sm text-label-sm">Vitrine</span>
+      </button>
+      <button onclick="app.navigate('cliente-carrinho')" data-path="cliente-carrinho" class="cliente-nav-item flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-on-surface-variant relative">
+        <span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+        <span id="nav-cart-badge-count" class="absolute top-1 right-3 bg-secondary text-on-secondary font-label-sm text-[9px] w-4 h-4 rounded-full flex items-center justify-center leading-none font-bold">0</span>
+        <span class="font-label-sm text-label-sm">Carrinho</span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- MODALS -->
+
+  <!-- MODAL: NOVA CATEGORIA -->
+  <div id="modal-category" class="fixed inset-0 z-50 hidden items-center justify-center modal-backdrop p-4">
+    <div class="bg-surface-container-lowest rounded-2xl p-6 max-w-md w-full shadow-xl flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Nova Categoria</h3>
+        <button onclick="app.closeCategoryModal()" class="text-on-surface-variant hover:text-on-surface">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="category-form" class="flex flex-col gap-3">
+        <div class="flex flex-col gap-1">
+          <label class="font-label-md text-label-md text-on-surface">Nome da Categoria <span class="text-error">*</span></label>
+          <input type="text" id="cat-name" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="Ex: Periféricos Gamer"/>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label class="font-label-md text-label-md text-on-surface">Ícone (Material Symbol)</label>
+          <input type="text" id="cat-icon" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="smartphone, headphones, laptop..."/>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label class="font-label-md text-label-md text-on-surface">Descrição</label>
+          <input type="text" id="cat-desc" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="Breve descrição da categoria"/>
+        </div>
+
+        <div class="flex gap-2 pt-2">
+          <button type="button" onclick="app.closeCategoryModal()" class="flex-1 h-11 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold">Cancelar</button>
+          <button type="submit" class="flex-1 h-11 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold">Salvar Categoria</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: NOVA PROMOÇÃO -->
+  <div id="modal-promotion" class="fixed inset-0 z-50 hidden items-center justify-center modal-backdrop p-4">
+    <div class="bg-surface-container-lowest rounded-2xl p-6 max-w-lg w-full shadow-xl flex flex-col gap-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between">
+        <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Nova Promoção</h3>
+        <button onclick="app.closePromotionModal()" class="text-on-surface-variant hover:text-on-surface">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="promotion-form" class="flex flex-col gap-3">
+        <div class="flex flex-col gap-1">
+          <label class="font-label-md text-label-md text-on-surface">Nome da Promoção <span class="text-error">*</span></label>
+          <input type="text" id="promo-name" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="Ex: Semana Gamer -20%"/>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Tipo de Desconto</label>
+            <select id="promo-discount-type" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary">
+              <option value="percentage">Porcentagem (%)</option>
+              <option value="fixed_amount">Valor Fixo (R$)</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Valor do Desconto <span class="text-error">*</span></label>
+            <input type="number" step="0.01" id="promo-discount-value" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="15"/>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label class="font-label-md text-label-md text-on-surface">Aplicar em:</label>
+          <select id="promo-applies-to" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" onchange="app.togglePromotionTargetSelects()">
+            <option value="products">Produto Específico</option>
+            <option value="categories">Categoria Inteira</option>
+            <option value="all">Todos os Produtos</option>
+          </select>
+        </div>
+
+        <div id="promo-target-product-wrapper" class="flex flex-col gap-1">
+          <label class="font-label-md text-label-md text-on-surface">Selecione o Produto</label>
+          <select id="promo-target-product" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary">
+            <!-- Dynamic products -->
+          </select>
+        </div>
+
+        <div id="promo-target-category-wrapper" class="hidden flex-col gap-1">
+          <label class="font-label-md text-label-md text-on-surface">Selecione a Categoria</label>
+          <select id="promo-target-category" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary">
+            <!-- Dynamic categories -->
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Data de Início</label>
+            <input type="datetime-local" id="promo-starts-at" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary"/>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Data de Expiração <span class="text-error">*</span></label>
+            <input type="datetime-local" id="promo-expires-at" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary"/>
+          </div>
+        </div>
+
+        <div class="flex gap-2 pt-2">
+          <button type="button" onclick="app.closePromotionModal()" class="flex-1 h-11 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold">Cancelar</button>
+          <button type="submit" class="flex-1 h-11 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold">Criar Promoção</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: NOVO CUPOM -->
+  <div id="modal-coupon" class="fixed inset-0 z-50 hidden items-center justify-center modal-backdrop p-4">
+    <div class="bg-surface-container-lowest rounded-2xl p-6 max-w-md w-full shadow-xl flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Novo Cupom de Desconto</h3>
+        <button onclick="app.closeCouponModal()" class="text-on-surface-variant hover:text-on-surface">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="coupon-form" class="flex flex-col gap-3">
+        <div class="flex flex-col gap-1">
+          <label class="font-label-md text-label-md text-on-surface">Código do Cupom <span class="text-error">*</span></label>
+          <input type="text" id="coupon-code-input" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md uppercase font-bold outline-none focus:ring-2 focus:ring-secondary" placeholder="Ex: BLACK20"/>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Tipo de Desconto</label>
+            <select id="coupon-type-input" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary">
+              <option value="fixed_amount">Valor Fixo (R$)</option>
+              <option value="percentage">Porcentagem (%)</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Valor <span class="text-error">*</span></label>
+            <input type="number" step="0.01" id="coupon-val-input" required class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="15.00"/>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Mínimo da Compra (R$)</label>
+            <input type="number" step="0.01" id="coupon-min-input" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="50.00"/>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-label-md text-label-md text-on-surface">Limite de Usos</label>
+            <input type="number" id="coupon-maxuses-input" class="w-full h-11 px-3 bg-surface-container-low rounded-lg text-on-surface font-body-md text-body-md outline-none focus:ring-2 focus:ring-secondary" placeholder="100"/>
+          </div>
+        </div>
+
+        <div class="flex gap-2 pt-2">
+          <button type="button" onclick="app.closeCouponModal()" class="flex-1 h-11 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold">Cancelar</button>
+          <button type="submit" class="flex-1 h-11 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold">Salvar Cupom</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- GLOBAL TOAST NOTIFICATION -->
+  <div id="global-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full font-label-md text-label-md flex items-center gap-2 shadow-xl transition-all duration-300 opacity-0 pointer-events-none scale-90">
+    <span id="global-toast-icon" class="material-symbols-outlined text-[20px] text-tertiary-container">check_circle</span>
+    <span id="global-toast-msg">Operação realizada com sucesso!</span>
+  </div>
+
+  <!-- App Script -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
